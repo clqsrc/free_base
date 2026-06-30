@@ -24,12 +24,28 @@ func New_(obj interface{}) { //是不能写成 new_(obj * interface{}) 的
 
 }//
 
+//据说 go 1.18 之后的泛型可以解决这个问题
+func New_T[T any](obj *T){
+
+    // new_(obj);
+    New_(obj);
+
+}//
+
 //obj 可以是指针，只要和 new_() 的时候的一致就行了
 //如果 obj 是结构体的话有个坑，如果 new_() 之后结构体改变了，就会找不到原来的 key !!!
 //所以实际上传入的必须是指针 
 func Delete_(obj interface{}) {  //这里倒是可以写成 delete_(obj * interface{})，不过并不好
 
     delete_(obj);
+
+}//
+
+//据说 go 1.18 之后的泛型可以解决这个问题
+func Delete_T[T any](obj *T){
+
+    // new_(obj);
+    Delete_(obj);
 
 }//
 
